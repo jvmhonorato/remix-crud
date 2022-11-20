@@ -5,10 +5,10 @@ const db = connect('./file.db', {
 })
 
 export const getModels = async() => {
-    const  Quotes = await db.model('Quote', {
+    const  Quote = await db.model('Quote', {
         quote: String,
         author: String,
         id: 'increments'
     })
-    return { Quotes }
+    return { Quote }
 }

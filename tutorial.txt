@@ -7,3 +7,11 @@
 4:instalar o triology e sql.js: npm install trilogy sql.js
 
 5: criar na raiz lib.db.server.ts. OBS: o Remix sabe que arquivos .server não irão pra o frontend
+
+6:Em routes/index.tsx importar getModels de db.server.tsx, criar LoaderFunction do remix pra manipular os dados e tranformar em json()
+
+7:No Index retornar os dados com useLoaderdata() em seguida passar a variavel estanciada com .map()
+
+8:No Index.tsx import o Form d remix/react add <Form method="post" action="?index">com <input> de author e quote, criar tambem o <button>
+
+9: import ActioFunction e usar async com parametro  request e usar.formData.get() pra pegar o author e o quote 
