@@ -1,0 +1,9 @@
+1: criar projeto remix: npx create-remix@latest
+
+2: add nome do projeto, express, typescript
+
+3: add o repositorio remoto
+
+4:instalar o triology e sql.js: npm install trilogy sql.js
+
+5: criar na raiz lib.db.server.ts. OBS: o Remix sabe que arquivos .server não irão pra o frontend

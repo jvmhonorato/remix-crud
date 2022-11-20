@@ -18,7 +18,9 @@
     "isbot": "^3.6.5",
     "morgan": "^1.10.0",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "sql.js": "^1.8.0",
+    "trilogy": "^2.0.5"
   },
   "devDependencies": {
     "@remix-run/dev": "^1.7.6",
