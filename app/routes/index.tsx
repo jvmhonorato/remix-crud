@@ -12,8 +12,8 @@ interface Quote{
 export const action : ActionFunction = async({ request }) => {
  const formData = await request.formData()
  const  { Quote } = await getModels()
-
-if(request.method === 'DELETE'){
+ const action = formData.get('action')
+if(action === 'delete'){
    //excluir
    const id = formData.get('id')
    await Quote.remove({ id })
@@ -22,7 +22,7 @@ if(request.method === 'DELETE'){
     success: true
    })
 }
-if(request.method === 'POST'){
+
   const quote = formData.get('quote')
   const author = formData.get('author')
 
@@ -35,8 +35,8 @@ if(request.method === 'POST'){
     author
    })
 }
-return json({})
-} 
+
+
 
 
 export const loader : LoaderFunction = async() => {
@@ -61,9 +61,9 @@ export default function Index() {
           return (
             <li key={quote.id.toString()}>
           {quote.quote} - {quote.author}
-            <Form action="?index" method="delete">
+            <Form action="?index" method="post">
               <input type="hidden" name="id" value={quote.id.toString()}/>
-     
+              <input type="hidden" name="action" value="delete"/>
               <button>Excluir</button>
             </Form>
         </li>)

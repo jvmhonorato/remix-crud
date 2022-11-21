@@ -26,6 +26,6 @@ with JS
 11:add um <Form> com o metodo delete,criar no <Form> delete um <input> type hidden com o name="id" e o value={quote.id.toString()}, em seguida criar uma condicinal  pra o request.method se for chamado  o DELETE : passar o ID estanciado o formData('id') e dar um await em Quote.remove({id})
 
 without JS
-12: pra que o delete funcione sem  javascript: mo <Form> passar o methot "POST" e criar um <input> type=hidden com o name "action" e o value:"delete"
+12: pra que o delete funcione sem  javascript: mo <Form> passar o methot "POST" e criar um <input> type=hidden com o name "action" e o value:"delete", estanciar o formData('action') no action e passar o action no lugar do request.method na condicional "DELETE"
 
 13:
