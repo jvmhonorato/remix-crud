@@ -15,3 +15,5 @@
 8:No Index.tsx import o Form d remix/react add <Form method="post" action="?index">com <input> de author e quote, criar tambem o <button>
 
 9: import ActioFunction e usar async com parametro  request e usar.formData.get() pra pegar o author e o quote 
+
+10: typar o quote criando uma interface no main index.tsx

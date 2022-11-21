@@ -2,6 +2,13 @@ import { json, LoaderFunction,  ActionFunction } from "@remix-run/node";
 import { Form, useLoaderData } from "@remix-run/react";
 import { getModels } from '../../lib/db.server'
 
+interface Quote{
+    id:Number,
+    quote: String,
+    author: String
+
+  }
+
 export const action : ActionFunction = async({ request }) => {
  const formData = await request.formData()
 const quote = formData.get('quote')
@@ -27,7 +34,7 @@ export const loader : LoaderFunction = async() => {
 }
 
 export default function Index() {
-  const {quotes} = useLoaderData()
+  const {quotes} = useLoaderData() as {quotes: Quote[]}
   return (
     <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.4" }}>
       <h1>Quotes</h1>
@@ -39,7 +46,7 @@ export default function Index() {
       <ul>
         { quotes.map(quote => {
           return (
-            <li>
+            <li key={quote.id.toString()}>
           {quote.quote} - {quote.author}
             
         </li>)
