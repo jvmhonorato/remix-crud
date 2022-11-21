@@ -11,19 +11,31 @@ interface Quote{
 
 export const action : ActionFunction = async({ request }) => {
  const formData = await request.formData()
-const quote = formData.get('quote')
-const author = formData.get('author')
+ const  { Quote } = await getModels()
 
-const  { Quote } = await getModels()
-await Quote.create({
-  quote,
-  author
-})
+if(request.method === 'DELETE'){
+   //excluir
+   const id = formData.get('id')
+   await Quote.remove({ id })
 
- return json({
-  quote,
-  author
- })
+   return json({
+    success: true
+   })
+}
+if(request.method === 'POST'){
+  const quote = formData.get('quote')
+  const author = formData.get('author')
+
+  await Quote.create({
+    quote,
+    author
+  })
+  return json({
+    quote,
+    author
+   })
+}
+return json({})
 } 
 
 
@@ -41,6 +53,7 @@ export default function Index() {
       <Form method="post" action="?index">
         <input type="text" name="quote" placeholder="quote" />
         <input type="text" name="author" placeholder="author" />
+       
         <button>Create Quote</button>
       </Form >
       <ul>
@@ -48,7 +61,11 @@ export default function Index() {
           return (
             <li key={quote.id.toString()}>
           {quote.quote} - {quote.author}
-            
+            <Form action="?index" method="delete">
+              <input type="hidden" name="id" value={quote.id.toString()}/>
+     
+              <button>Excluir</button>
+            </Form>
         </li>)
         })}
        

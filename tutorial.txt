@@ -12,8 +12,20 @@
 
 7:No Index retornar os dados com useLoaderdata() em seguida passar a variavel estanciada com .map()
 
+CREATE 
+
 8:No Index.tsx import o Form d remix/react add <Form method="post" action="?index">com <input> de author e quote, criar tambem o <button>
 
 9: import ActioFunction e usar async com parametro  request e usar.formData.get() pra pegar o author e o quote 
 
-10: typar o quote criando uma interface no main index.tsx
+10: typar o quote criando uma interface no main index.tsx, passando a tipagem dos getModels
+
+DELETE  
+
+with JS
+11:add um <Form> com o metodo delete,criar no <Form> delete um <input> type hidden com o name="id" e o value={quote.id.toString()}, em seguida criar uma condicinal  pra o request.method se for chamado  o DELETE : passar o ID estanciado o formData('id') e dar um await em Quote.remove({id})
+
+without JS
+12: pra que o delete funcione sem  javascript: mo <Form> passar o methot "POST" e criar um <input> type=hidden com o name "action" e o value:"delete"
+
+13:
