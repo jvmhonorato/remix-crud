@@ -28,4 +28,19 @@ with JS
 without JS
 12: pra que o delete funcione sem  javascript: mo <Form> passar o methot "POST" e criar um <input> type=hidden com o name "action" e o value:"delete", estanciar o formData('action') no action e passar o action no lugar do request.method na condicional "DELETE"
 
-13:
+UPDATE 
+
+13: em routes criar quote/$id.tsx. Lembrando que o  '$' é passado pra manipular dados pela URL, criar um <Form>,
+criar LoaderFunction abstraindo params e estanciando em id o params.id 
+
+OBS: em index.tsx passar o Link no <Form> <Link to={`/quote/${quote.id}`}>
+
+14: importar o getModels de lib/db.server, abstrair o Quote e utilizar o metodo finfOne({id})
+
+15: Abstrair {quote} de useLoaderData() em QuoteEdit, em seguida deixar predefinido nos campos do <input> o os valores atuais:  defaultValue= {quote.quote} e {quote.author} 
+
+16: passar o action: ActionFunction com o request, params com eles usar o formData() pra capturar o quote e o author e usar o metodo update, e n final dar um retunr redirect("/") 
+
+
+
+ 

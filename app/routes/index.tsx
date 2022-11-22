@@ -1,5 +1,5 @@
 import { json, LoaderFunction,  ActionFunction } from "@remix-run/node";
-import { Form, useLoaderData } from "@remix-run/react";
+import { Form, Link, useLoaderData } from "@remix-run/react";
 import { getModels } from '../../lib/db.server'
 
 interface Quote{
@@ -41,12 +41,12 @@ if(action === 'delete'){
 
 export const loader : LoaderFunction = async() => {
   const { Quote } = await getModels()
-  const quotes = await Quote.find()
-  return json({ quotes })
+  const quote = await Quote.find()
+  return json({ quote })
 }
 
 export default function Index() {
-  const {quotes} = useLoaderData() as {quotes: Quote[]}
+  const {quote} = useLoaderData() as {quote: Quote[]}
   return (
     <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.4" }}>
       <h1>Quotes</h1>
@@ -57,10 +57,11 @@ export default function Index() {
         <button>Create Quote</button>
       </Form >
       <ul>
-        { quotes.map(quote => {
+        { quote.map(quote => {
           return (
             <li key={quote.id.toString()}>
           {quote.quote} - {quote.author}
+          <Link to={`quotes/${quote.id}`}>Edit</Link>
             <Form action="?index" method="post">
               <input type="hidden" name="id" value={quote.id.toString()}/>
               <input type="hidden" name="action" value="delete"/>
