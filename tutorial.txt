@@ -12,6 +12,8 @@
 
 7:No Index retornar os dados com useLoaderdata() em seguida passar a variavel estanciada com .map()
 
+OBS: npm run dev
+
 CREATE 
 
 8:No Index.tsx import o Form d remix/react add <Form method="post" action="?index">com <input> de author e quote, criar tambem o <button>
@@ -42,5 +44,25 @@ OBS: em index.tsx passar o Link no <Form> <Link to={`/quote/${quote.id}`}>
 16: passar o action: ActionFunction com o request, params com eles usar o formData() pra capturar o quote e o author e usar o metodo update, e n final dar um retunr redirect("/") 
 
 
+VALIDAÇÃO
+
+17: instalar o ZOD: npm install zod
+
+18: Em $id.tsx import {z} from 'zod'
+
+19: criar QuoteSchema chamando z.object({}) e dentro dele passar as condições da validação dos campos, no caso desse projeto de quotes e de author 
+
+20: ainda em $id.tsx dentro da action: estanciar o QuoteSchema.parse({}) em quoteObj, pra tornar o quote e o author um só objeto
+
+21: passar em update o objeto quoteObj ja validado
+
+22: em action dar um try{}catch(){} 
+
+23: no catch estanciar errorr.issues e dar um reduce() em seguida retoonrar um json()
+
+24: No componente QuoteEdit() importar o useActionData em seguida passar dentro do TSX um <pre>{JSON.stringify(action, null, 2)}</pre> pra visualisar os error no browser 
+
+25: pra renderizar a mensagem de error na tela passar no TSX em baixo de cada <input>:     {action?.errors?.quote && <p>{action?.errors?.quote}</p>}
+ 
 
  
