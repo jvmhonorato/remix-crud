@@ -76,3 +76,25 @@ VALIDAÇÃO 01
 . usar o QuoteSchema  como modelo de tipagem: type Quote = z.infer<typeof QuoteSchema>
 
 . depois usar Quote como interface de tipo pra quote ue é a estancia de useLoaderData():  const {quote} = useLoaderData() as { quote : Quote }
+
+. passar mensagem de retorno de error em quoteObj() de acordo com o error apresentado
+
+. passar no return json   errors:  quoteObj.error.flatten()
+
+. criar um <LoaderDataType> type como uma interface e passar em useLoaderData
+
+. criar uma nova interface de tipagem: inferSafeParserErrors<com genericos>
+
+. criar um type ActionDtaType baseado no inferSafeParserErrors e usar em useActionData 
+
+
+ORGANIZANDO
+
+. criar models/Quote.ts e colocar as tipagem lá em seguida importar de volta pra $id.tsx
+
+INDEX.TSX
+.passar validation CREATE, passar o  safeParse() e a condicional  pra mostrar erro ou pra criar
+
+.estanciar o useActionData()
+
+.criar o: type ActionDataType, e importar o errors: QuoteErrors, e tipar o useActionData<ActionDataType>()

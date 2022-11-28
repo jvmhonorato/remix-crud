@@ -1,16 +1,19 @@
-import { ActionFunction, json, LoaderFunction, redirect } from "@remix-run/node";
+import {type ActionFunction, json,type LoaderFunction, redirect } from "@remix-run/node";
 import { Form, useActionData, useLoaderData } from "@remix-run/react";
 import { getModels } from "lib/db.server";
-import { z } from 'zod'
+import {QuoteSchema, type Quote, type QuoteErrors } from "models/Quote";
 
-// schema ZOD validation
-const QuoteSchema = z.object({
-    quote: z.string().min(10),
-    author: z.string().min(5)
-})
 
-//use QuoteSchema as a type model 
-type Quote = z.infer<typeof QuoteSchema>
+
+
+
+type LoaderDataType ={
+    quote:Quote
+}
+type ActionDataType = {
+    errors: QuoteErrors
+}
+
 
 
 export const action: ActionFunction = async ({request, params}) => {
@@ -20,11 +23,13 @@ export const action: ActionFunction = async ({request, params}) => {
     const quote = formData.get('quote')
     const author = formData.get('author')
 
+     //validation condition update
     const quoteObj = QuoteSchema.safeParse({
-        quote,author
+        quote,
+        author,
     })
     if(quoteObj.success){
-        const { Quote } = await getModels()
+        const { Quote } = await getModels() 
         await Quote.update({
              id,
          },
@@ -32,13 +37,9 @@ export const action: ActionFunction = async ({request, params}) => {
          )
          return redirect("/")
     }
-
-    const issues = quoteObj.error.issues
-    const issuesObj = issues.reduce((prev, curr)=> {
-        return {...prev, [curr.path[0]]: curr.message}
-    },{})
+   
     return json({
-        errors: issuesObj
+        errors:  quoteObj.error.flatten()
     })
 }
 
@@ -52,8 +53,8 @@ export const loader : LoaderFunction = async({params}) => {
 
 
 export default function QuoteEdit(){
-    const {quote} = useLoaderData() as { quote : Quote }
-    const action = useActionData()
+    const {quote} = useLoaderData<LoaderDataType>()
+    const action = useActionData< ActionDataType>()
     return (
         <>
          <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.4" }}>
@@ -62,9 +63,9 @@ export default function QuoteEdit(){
       <pre>{JSON.stringify(action, null, 2)}</pre>
       <Form method="post" action="?index">
         <input type="text" name="quote" placeholder="quote" defaultValue={quote.quote} />
-        {action?.errors?.quote && <p>{action?.errors?.quote}</p>}
+        {action?.errors?.fieldErrors?.quote && <p>{action?.errors?.fieldErrors?.quote.map((errMessage) => errMessage)}</p>}
         <input type="text" name="author" placeholder="author" defaultValue={quote.author} />
-        {action?.errors?.author && <p>{action?.errors?.author}</p>}
+        {action?.errors?.fieldErrors?.author && <p>{action?.errors?.fieldErrors?.author.map((errMessage) => errMessage)}</p>}
         <button>Update Quote</button>
       </Form >
       </div>
