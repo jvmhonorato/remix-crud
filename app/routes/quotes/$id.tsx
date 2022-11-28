@@ -3,39 +3,45 @@ import { Form, useActionData, useLoaderData } from "@remix-run/react";
 import { getModels } from "lib/db.server";
 import { z } from 'zod'
 
+// schema ZOD validation
 const QuoteSchema = z.object({
     quote: z.string().min(10),
     author: z.string().min(5)
 })
 
+//use QuoteSchema as a type model 
+type Quote = z.infer<typeof QuoteSchema>
+
+
 export const action: ActionFunction = async ({request, params}) => {
-    try{
+    
     const formData = await request.formData()
     const id = params.id
     const quote = formData.get('quote')
     const author = formData.get('author')
-    const quoteObj = QuoteSchema.parse({
+
+    const quoteObj = QuoteSchema.safeParse({
         quote,author
     })
+    if(quoteObj.success){
+        const { Quote } = await getModels()
+        await Quote.update({
+             id,
+         },
+         quoteObj
+         )
+         return redirect("/")
+    }
 
-    const { Quote } = await getModels()
-   await Quote.update({
-        id,
-    },
-    quoteObj
-    )
-    return redirect("/")
-}catch(err){
-    console.log(err.issues)
-    const issues = err.issues
-    const issuesObj = issues.reduce((prev: any, curr: { path: any[]; message: any; })=> {
+    const issues = quoteObj.error.issues
+    const issuesObj = issues.reduce((prev, curr)=> {
         return {...prev, [curr.path[0]]: curr.message}
     },{})
     return json({
         errors: issuesObj
     })
 }
-}
+
 
 export const loader : LoaderFunction = async({params}) => {
     const id = params.id
@@ -46,7 +52,7 @@ export const loader : LoaderFunction = async({params}) => {
 
 
 export default function QuoteEdit(){
-    const {quote} = useLoaderData()
+    const {quote} = useLoaderData() as { quote : Quote }
     const action = useActionData()
     return (
         <>

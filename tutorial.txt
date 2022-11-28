@@ -44,7 +44,7 @@ OBS: em index.tsx passar o Link no <Form> <Link to={`/quote/${quote.id}`}>
 16: passar o action: ActionFunction com o request, params com eles usar o formData() pra capturar o quote e o author e usar o metodo update, e n final dar um retunr redirect("/") 
 
 
-VALIDAÇÃO
+VALIDAÇÃO 01
 
 17: instalar o ZOD: npm install zod
 
@@ -65,4 +65,14 @@ VALIDAÇÃO
 25: pra renderizar a mensagem de error na tela passar no TSX em baixo de cada <input>:     {action?.errors?.quote && <p>{action?.errors?.quote}</p>}
  
 
- 
+ VALIDAÇÃO 02
+
+ 26: tirar o o try/catch
+
+ . substituir parse() por safeParse()
+
+. depois do quoteObj criar condiconal: se quoteObj for success... acionar Quote.update() dentro da condicional, se não for, ele vai pra o próximo bloco que trata o error mostrando o que deve ser feito na tela
+
+. usar o QuoteSchema  como modelo de tipagem: type Quote = z.infer<typeof QuoteSchema>
+
+. depois usar Quote como interface de tipo pra quote ue é a estancia de useLoaderData():  const {quote} = useLoaderData() as { quote : Quote }
