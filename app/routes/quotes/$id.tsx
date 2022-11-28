@@ -30,9 +30,10 @@ export const action: ActionFunction = async ({request, params}) => {
     })
     if(quoteObj.success){
         const { Quote } = await getModels() 
-        await Quote.update({
+        await Quote.update(
+            {
              id,
-         },
+            },
          quoteObj
          )
          return redirect("/")

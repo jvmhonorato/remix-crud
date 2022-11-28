@@ -88,6 +88,8 @@ VALIDAÇÃO 01
 . criar um type ActionDtaType baseado no inferSafeParserErrors e usar em useActionData 
 
 
+
+
 ORGANIZANDO
 
 . criar models/Quote.ts e colocar as tipagem lá em seguida importar de volta pra $id.tsx
@@ -98,3 +100,23 @@ INDEX.TSX
 .estanciar o useActionData()
 
 .criar o: type ActionDataType, e importar o errors: QuoteErrors, e tipar o useActionData<ActionDataType>()
+
+
+
+
+
+USETRANSITION
+
+.Em index.tsx importar e estanciar  o useTransition() pra verificar as operações em andamento
+
+. verificar o que tem no transition?:<pre>{JSON.stringify(transition,null,2)}</pre>
+
+.criar a função sleep com setTimeout e passar no componente index o sleep(3000) pra testar o transition a seguir...
+
+. criar no TSX uma condicioanal: {transition.state === "submiting" && <p>Salvando...</p>} pra aparecer a mensagem enquanto carregar os dados
+
+. criar tambem o disabled no <button disabled={transition.state === "submitting"}> com a condicional pra desbilitar o button em quanto estiver carregando, e tambem uma condicional dentro do boão pra mostrar salvando... ou create Quote
+
+.passar um <input hidden value 'create'> dentro do Form 
+
+.criar o isSaving pra condicionar a renderização da menssagem de Loading de acorod com o processo de criar ou excluir
