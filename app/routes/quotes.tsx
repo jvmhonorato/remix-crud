@@ -6,10 +6,15 @@ const QuotesLayout = () => {
     <h1><Link to='/'>Quotes</Link></h1>
     <Outlet/>
     {matches.map((match)=> {
-    if(match.handle){
+    if(match.handle && match.handle.breadcrumb){
         const handleElement = match.handle.breadcrumb(match.data)
+        if(match?.handle?.other) {
+            return <li>Other: {match.handle.other}</li>
+        }
         return <li>{handleElement}</li>
     }
+    return JSON.stringify(match)
+  
     return(
       null
     )})}

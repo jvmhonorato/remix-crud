@@ -53,7 +53,8 @@ export const loader : LoaderFunction = async({params}) => {
 }
 
 export const handle = {
-    breadcrumb: (data: any) => (<Link to={`/quotes${data.quote.id}` }> {data.quote.quote}</Link>)
+    breadcrumb: (data: LoaderDataType) => (<Link to={`/quotes${data.quote.id}` }> {data.quote.quote}</Link>),
+    // other: "test"
 }
 
 export default function QuoteEdit(){

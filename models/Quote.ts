@@ -1,7 +1,8 @@
-import { z } from 'zod'
+import { string, z } from 'zod'
 
 // schema ZOD validation
 export const QuoteSchema = z.object({
+    id:string(),
     quote: z.string().min(10, {message: 'A citação precisa ter mais de 10 caracteres'}),
     author: z.string().min(5, {message: 'O autor precisa ter mais de 5 caracteres'})
 })
