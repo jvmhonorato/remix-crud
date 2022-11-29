@@ -159,3 +159,19 @@ PATHLESS ROUTES
 . criar um arquivo com o mesmo nome da pasta __about.tsx
 passar um componete e no retorno do jsx passar o <Outlet/>
 agora todos os arquivos/ componete dentro da pasta __about terão o layout de __about.tsx
+
+
+
+
+AUTENTICAÇÃO
+
+. Criar lib/cookies.server.ts, importar o createCookie e criar o auth
+
+. Em routes criar sign-in.tsx, criar component com <Form> e campos de <input>
+
+. importar auth de lib/cookie.server
+
+.Em sign-in.tsx  criar uma function action async, estanciar objetos em cookie, dar um redirect pra admin setando o cookie com o auth .seralize(cookie)
+
+.
+

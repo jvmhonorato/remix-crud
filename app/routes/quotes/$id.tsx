@@ -64,6 +64,7 @@ export default function QuoteEdit(){
         <>
         
       <pre>{JSON.stringify(quote, null, 2)}</pre>
+      
       <pre>{JSON.stringify(action, null, 2)}</pre>
       <Form method="post" action="?index">
         <input type="text" name="quote" placeholder="quote" defaultValue={quote.quote} />
