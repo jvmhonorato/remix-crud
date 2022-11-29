@@ -173,5 +173,14 @@ AUTENTICAÇÃO
 
 .Em sign-in.tsx  criar uma function action async, estanciar objetos em cookie, dar um redirect pra admin setando o cookie com o auth .seralize(cookie)
 
-.
+.criar em routes admin/index.tsx, criarcomponet e exportar
+
+
+.criar em admin quotes/index.tsx
+
+.criar routes/admin.tsx que será o layout dos componente que estiverem dento da pasta admin OBS passar o <Outlet/>
+
+.Em admin.tsx criar function loader, fazer o request do cookie no headers, em seguida dar um await auth.parse e estanciar em cookies
+
+. Em admin.tsx na function loader criar uma condicional pra se caso não haja cookie no storage redircionar pra page sign-in
 
