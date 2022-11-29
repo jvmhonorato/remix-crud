@@ -20,6 +20,9 @@ CREATE
 
 .  typar o quote criando uma interface no main index.tsx, passando a tipagem dos getModels
 
+
+
+
 DELETE  
 
 with JS
@@ -42,6 +45,8 @@ OBS: em index.tsx passar o Link no <Form> <Link to={`/quote/${quote.id}`}>
 .  passar o action: ActionFunction com o request, params com eles usar o formData() pra capturar o quote e o author e usar o metodo update, e n final dar um retunr redirect("/") 
 
 
+
+
 VALIDAÇÃO 01
 
 .  instalar o ZOD: npm install zod
@@ -62,6 +67,7 @@ VALIDAÇÃO 01
 
 .  pra renderizar a mensagem de error na tela passar no TSX em baixo de cada <input>:     {action?.errors?.quote && <p>{action?.errors?.quote}</p>}
  
+
 
  VALIDAÇÃO 02
 
@@ -120,6 +126,8 @@ USETRANSITION
 .criar o isSaving pra condicionar a renderização da menssagem de Loading de acorod com o processo de criar ou excluir
 
 
+
+
 USEMATCHES
 
 . criar routes/quotes.tsx, que estará no mesmo nível da past quotes, sendo assim o remix entende que ele se´ra o layout de tudo que tiver na pasta quotes
@@ -135,3 +143,19 @@ USEMATCHES
 . criar em index.tsx um objeto handle 'home' com o <Link to='/'>
 
 .criar tambem no root.tsx
+
+
+
+
+
+PATHLESS ROUTES 
+
+. criar duas novas páginas routes/about.tsx e career.tsx
+
+.pra criar Layout independentes usar o PATHLESS
+
+. criar pasta routes/__about, e mover career e about pra essa pasta
+
+. criar um arquivo com o mesmo nome da pasta __about.tsx
+passar um componete e no retorno do jsx passar o <Outlet/>
+agora todos os arquivos/ componete dentro da pasta __about terão o layout de __about.tsx
