@@ -1,5 +1,5 @@
 import {type ActionFunction, json,type LoaderFunction, redirect } from "@remix-run/node";
-import { Form, useActionData, useLoaderData } from "@remix-run/react";
+import { Form, Link, useActionData, useLoaderData } from "@remix-run/react";
 import { getModels } from "lib/db.server";
 import {QuoteSchema, type Quote, type QuoteErrors } from "models/Quote";
 
@@ -52,14 +52,16 @@ export const loader : LoaderFunction = async({params}) => {
     return json({quote})
 }
 
+export const handle = {
+    breadcrumb: (data: any) => (<Link to={`/quotes${data.quote.id}` }> {data.quote.quote}</Link>)
+}
 
 export default function QuoteEdit(){
     const {quote} = useLoaderData<LoaderDataType>()
     const action = useActionData< ActionDataType>()
     return (
         <>
-         <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.4" }}>
-      <h1>Quotes</h1>
+        
       <pre>{JSON.stringify(quote, null, 2)}</pre>
       <pre>{JSON.stringify(action, null, 2)}</pre>
       <Form method="post" action="?index">
@@ -69,7 +71,7 @@ export default function QuoteEdit(){
         {action?.errors?.fieldErrors?.author && <p>{action?.errors?.fieldErrors?.author.map((errMessage) => errMessage)}</p>}
         <button>Update Quote</button>
       </Form >
-      </div>
+      
       </>
     )
 }

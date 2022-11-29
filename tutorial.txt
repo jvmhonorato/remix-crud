@@ -1,73 +1,71 @@
-1: criar projeto remix: npx create-remix@latest
+.  criar projeto remix: npx create-remix@latest
 
-2: add nome do projeto, express, typescript
+.  add nome do projeto, express, typescript
 
-3: add o repositorio remoto
+.  add o repositorio remoto
 
-4:instalar o triology e sql.js: npm install trilogy sql.js
+. instalar o triology e sql.js: npm install trilogy sql.js
 
-5: criar na raiz lib.db.server.ts. OBS: o Remix sabe que arquivos .server não irão pra o frontend
+.  criar na raiz lib.db.server.ts. OBS: o Remix sabe que arquivos .server não irão pra o frontend
 
-6:Em routes/index.tsx importar getModels de db.server.tsx, criar LoaderFunction do remix pra manipular os dados e tranformar em json()
+. Em routes/index.tsx importar getModels de db.server.tsx, criar LoaderFunction do remix pra manipular os dados e tranformar em json()
 
-7:No Index retornar os dados com useLoaderdata() em seguida passar a variavel estanciada com .map()
+. No Index retornar os dados com useLoaderdata() em seguida passar a variavel estanciada com .map()
 
 OBS: npm run dev
 
 CREATE 
+. No Index.tsx import o Form d remix/react add <Form method="post" action="?index">com <input> de author e quote, criar tambem o <button>
+.  import ActioFunction e usar async com parametro  request e usar.formData.get() pra pegar o author e o quote 
 
-8:No Index.tsx import o Form d remix/react add <Form method="post" action="?index">com <input> de author e quote, criar tambem o <button>
-
-9: import ActioFunction e usar async com parametro  request e usar.formData.get() pra pegar o author e o quote 
-
-10: typar o quote criando uma interface no main index.tsx, passando a tipagem dos getModels
+.  typar o quote criando uma interface no main index.tsx, passando a tipagem dos getModels
 
 DELETE  
 
 with JS
-11:add um <Form> com o metodo delete,criar no <Form> delete um <input> type hidden com o name="id" e o value={quote.id.toString()}, em seguida criar uma condicinal  pra o request.method se for chamado  o DELETE : passar o ID estanciado o formData('id') e dar um await em Quote.remove({id})
+. add um <Form> com o metodo delete,criar no <Form> delete um <input> type hidden com o name="id" e o value={quote.id.toString()}, em seguida criar uma condicinal  pra o request.method se for chamado  o DELETE : passar o ID estanciado o formData('id') e dar um await em Quote.remove({id})
 
 without JS
-12: pra que o delete funcione sem  javascript: mo <Form> passar o methot "POST" e criar um <input> type=hidden com o name "action" e o value:"delete", estanciar o formData('action') no action e passar o action no lugar do request.method na condicional "DELETE"
+.  pra que o delete funcione sem  javascript: mo <Form> passar o methot "POST" e criar um <input> type=hidden com o name "action" e o value:"delete", estanciar o formData('action') no action e passar o action no lugar do request.method na condicional "DELETE"
 
 UPDATE 
 
-13: em routes criar quote/$id.tsx. Lembrando que o  '$' é passado pra manipular dados pela URL, criar um <Form>,
+.  em routes criar quote/$id.tsx. Lembrando que o  '$' é passado pra manipular dados pela URL, criar um <Form>,
 criar LoaderFunction abstraindo params e estanciando em id o params.id 
 
 OBS: em index.tsx passar o Link no <Form> <Link to={`/quote/${quote.id}`}>
 
-14: importar o getModels de lib/db.server, abstrair o Quote e utilizar o metodo finfOne({id})
+.  importar o getModels de lib/db.server, abstrair o Quote e utilizar o metodo finfOne({id})
 
-15: Abstrair {quote} de useLoaderData() em QuoteEdit, em seguida deixar predefinido nos campos do <input> o os valores atuais:  defaultValue= {quote.quote} e {quote.author} 
+.  Abstrair {quote} de useLoaderData() em QuoteEdit, em seguida deixar predefinido nos campos do <input> o os valores atuais:  defaultValue= {quote.quote} e {quote.author} 
 
-16: passar o action: ActionFunction com o request, params com eles usar o formData() pra capturar o quote e o author e usar o metodo update, e n final dar um retunr redirect("/") 
+.  passar o action: ActionFunction com o request, params com eles usar o formData() pra capturar o quote e o author e usar o metodo update, e n final dar um retunr redirect("/") 
 
 
 VALIDAÇÃO 01
 
-17: instalar o ZOD: npm install zod
+.  instalar o ZOD: npm install zod
 
-18: Em $id.tsx import {z} from 'zod'
+.  Em $id.tsx import {z} from 'zod'
 
-19: criar QuoteSchema chamando z.object({}) e dentro dele passar as condições da validação dos campos, no caso desse projeto de quotes e de author 
+.  criar QuoteSchema chamando z.object({}) e dentro dele passar as condições da validação dos campos, no caso desse projeto de quotes e de author 
 
-20: ainda em $id.tsx dentro da action: estanciar o QuoteSchema.parse({}) em quoteObj, pra tornar o quote e o author um só objeto
+.  ainda em $id.tsx dentro da action: estanciar o QuoteSchema.parse({}) em quoteObj, pra tornar o quote e o author um só objeto
 
-21: passar em update o objeto quoteObj ja validado
+.  passar em update o objeto quoteObj ja validado
 
-22: em action dar um try{}catch(){} 
+.  em action dar um try{}catch(){} 
 
-23: no catch estanciar errorr.issues e dar um reduce() em seguida retoonrar um json()
+.  no catch estanciar errorr.issues e dar um reduce() em seguida retoonrar um json()
 
-24: No componente QuoteEdit() importar o useActionData em seguida passar dentro do TSX um <pre>{JSON.stringify(action, null, 2)}</pre> pra visualisar os error no browser 
+.  No componente QuoteEdit() importar o useActionData em seguida passar dentro do TSX um <pre>{JSON.stringify(action, null, 2)}</pre> pra visualisar os error no browser 
 
-25: pra renderizar a mensagem de error na tela passar no TSX em baixo de cada <input>:     {action?.errors?.quote && <p>{action?.errors?.quote}</p>}
+.  pra renderizar a mensagem de error na tela passar no TSX em baixo de cada <input>:     {action?.errors?.quote && <p>{action?.errors?.quote}</p>}
  
 
  VALIDAÇÃO 02
 
- 26: tirar o o try/catch
+ .  tirar o o try/catch
 
  . substituir parse() por safeParse()
 
@@ -120,3 +118,20 @@ USETRANSITION
 .passar um <input hidden value 'create'> dentro do Form 
 
 .criar o isSaving pra condicionar a renderização da menssagem de Loading de acorod com o processo de criar ou excluir
+
+
+USEMATCHES
+
+. criar routes/quotes.tsx, que estará no mesmo nível da past quotes, sendo assim o remix entende que ele se´ra o layout de tudo que tiver na pasta quotes
+
+. em quotes.tsx importar e aplicar o <Outlet/>
+
+.em quotes.tsx aplicar o hook useMatches() estaqnciado em matches
+
+. criar e exportar objeto handle com o breadcrumb dentro dele retornando um <Link>
+
+. em quotes.tsx no TSX dar um matches.map e criar uma condicional se o handle for true retonar o conteúdo de breadcrumb, que nsse caso é o <link>
+
+. criar em index.tsx um objeto handle 'home' com o <Link to='/'>
+
+.criar tambem no root.tsx

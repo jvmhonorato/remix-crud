@@ -66,6 +66,10 @@ export const loader : LoaderFunction = async() => {
   return json({ quote })
 }
 
+export const handle = {
+  breadcrumb: () => (<Link to='/'>Home</Link>)
+}
+
 export default function Index() {
   const {quote} = useLoaderData() as {quote: Quote[]}
   const action = useActionData<ActionDataType>()
