@@ -2,10 +2,22 @@ import { redirect } from "@remix-run/node"
 import { Form } from "@remix-run/react"
 import { auth } from "../../lib/cookies.server"
 
+import { signToken } from "lib/jwt.server"
 
 //action to setting cookie 
 export async function action({request}) {
-    const cookie = {user:'Victor Honorato', token:'<token>'}
+   
+
+    const payload = {
+        id: 1,
+        name:'Victor Honorato'
+    }
+    //catch toke from jwt.server.ts
+    const token = signToken(payload)
+    //use token auth as a password access
+    const cookie = {user:'Victor Honorato', token:token}
+    
+
 
     
     return redirect('/admin', {

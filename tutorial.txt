@@ -184,3 +184,18 @@ AUTENTICAÇÃO
 
 . Em admin.tsx na function loader criar uma condicional pra se caso não haja cookie no storage redircionar pra page sign-in
 
+
+AUTENTICAÇÃO JWT
+
+
+. Criar em lib/jwt.server.ts importar o sign de jsonwebtoken e exportar as funções signToken, verifyToken  com seus parametro dinamicos pra serem passado quando a função for usada nos componentes da aplicação
+
+. Instalar:  npm install jsonwebtoken
+
+. Em sign-in importar o sign de jsonwebtoken, criar objeto payload
+
+.importar signToken(payload) estanciar em token passando o objeto payload
+
+. Em admin.tsx dar um try{}catch(){}, no try estancair o verifyToken(token), dar o return do json com cookie,token,decoded. e no catch dar o return redirect("/sign-in") se der errado 
+
+
