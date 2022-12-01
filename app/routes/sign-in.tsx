@@ -11,7 +11,7 @@ export async function action({ request }) {
    const formData = await   request.formData()
    const email = formData.get('email')
    const passwd = formData.get('passwd')
-console.log(email, passwd)
+   console.log(email, passwd)
 
 //grab model interface em db.server
 const  { User } = await getModels()

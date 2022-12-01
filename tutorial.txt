@@ -212,3 +212,10 @@ dar um SEED que é criar novo user admim caso nã haja um.
 . passar o name='' nos input
 
 .Em sign-in.tsx importar o getModels() pegando o User, dar um user findOne em email passar uma condicional caso haja usuario cair na segunda condicional, caso passwd seja igual ao que há no databank ele seguirá a rotina da pagina autenticando os dados passados e redirecionando pra /admin, se não houver ele não fará nada
+
+
+DESLOGAR
+
+.criar routes/sign-out.ts, e criar um loader function
+
+. em cookie.server.ts criar deleteAuth com valor negativado, pois essa é a forma de apagar um cookie setando a data dele no passado

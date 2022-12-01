@@ -1,5 +1,5 @@
 import { json, redirect } from "@remix-run/node"
-import { Outlet, useLoaderData } from "@remix-run/react"
+import { Link, Outlet, useLoaderData } from "@remix-run/react"
 import { auth } from "lib/cookies.server"
 import { verifyToken } from "lib/jwt.server"
 
@@ -29,6 +29,7 @@ const AdminLayout = () => {
     return(
         <>
         <h1>Admin Layout</h1>
+        <Link to='/sign-out'>Log out</Link>
         <pre>{JSON.stringify(data, null,2)}</pre>
         <Outlet/>
         </>
