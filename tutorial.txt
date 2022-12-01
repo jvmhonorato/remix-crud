@@ -199,3 +199,16 @@ AUTENTICAÇÃO JWT
 . Em admin.tsx dar um try{}catch(){}, no try estancair o verifyToken(token), dar o return do json com cookie,token,decoded. e no catch dar o return redirect("/sign-in") se der errado 
 
 
+AUTENTICAÇÃO BUSCANDO USER IN DATABANK
+
+. Em db.server.ts criar um novo model User: email, password e ID. pra armazenar um novo usuário  
+
+. ainda dentro de db.server.ts passar um User.findOne({id:1})
+e estancair em userRoot, passar uma condicional caso !userRoot
+dar um SEED que é criar novo user admim caso nã haja um.
+
+.Em sign-in.tsx  estanciar o formData(), pegando o email, o passwd
+
+. passar o name='' nos input
+
+.Em sign-in.tsx importar o getModels() pegando o User, dar um user findOne em email passar uma condicional caso haja usuario cair na segunda condicional, caso passwd seja igual ao que há no databank ele seguirá a rotina da pagina autenticando os dados passados e redirecionando pra /admin, se não houver ele não fará nada

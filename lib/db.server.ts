@@ -6,10 +6,31 @@ const db = connect('./file.db', {
 
 export const getModels = async() => {
     const  Quote = await db.model('Quote', {
-        id: 'increments',
+        
         quote: String,
         author: String,
+        id: 'increments',
         
     })
-    return { Quote }
+    const  User = await db.model('users', {
+        
+        email: String,
+        passwd: String,
+        id: 'increments',
+        
+    })
+
+    //initial seed
+    const userRoot = await User.findOne({id: 1})
+    if(!userRoot){
+        await User.create({
+             email:'vituhonorato@teste.com', 
+             passwd:'abc123',
+             id : 1 
+            })
+    }
+     console.log({userRoot})
+
+
+    return { Quote, User}
 }
