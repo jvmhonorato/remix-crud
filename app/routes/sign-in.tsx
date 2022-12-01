@@ -1,4 +1,4 @@
-import { json, LoaderFunction, redirect } from "@remix-run/node"
+import { ActionFunction, json,  redirect } from "@remix-run/node"
 import { Form } from "@remix-run/react"
 import { auth } from "../../lib/cookies.server"
 import { getModels } from '../../lib/db.server'
@@ -7,7 +7,7 @@ import { User} from 'models/User'
 import { signToken } from "lib/jwt.server"
 
 //action to setting cookie 
-export const   action: LoaderFunction = async({ request }) => {
+export const   action: ActionFunction = async({ request }) => {
     //use formData to get input name im Form
    const formData = await   request.formData()
    const email = formData.get('email') as string ||''

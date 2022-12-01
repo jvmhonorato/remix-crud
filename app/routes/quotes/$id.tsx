@@ -34,7 +34,7 @@ export const action: ActionFunction = async ({request, params}) => {
             {
              id,
             },
-         quoteObj
+         quoteObj.data
          )
          return redirect("/")
     }
