@@ -13,8 +13,6 @@ const QuotesLayout = () => {
         }
         return <li>{handleElement}</li>
     }
-    return JSON.stringify(match)
-  
     return(
       null
     )})}
@@ -22,5 +20,10 @@ const QuotesLayout = () => {
     </div>
     )
 }
+
+
+export function ErrorBoundary({ error}: {error: Error}) {
+    return <h1>Error quotes {JSON.stringify(error.message)}</h1>
+  }
 
 export default QuotesLayout

@@ -34,3 +34,8 @@ export default function App() {
     </html>
   );
 }
+
+
+export function ErrorBoundary({ error}: {error: Error}) {
+  return <h1>Error {JSON.stringify(error.message)}</h1>
+}

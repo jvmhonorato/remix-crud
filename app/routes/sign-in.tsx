@@ -8,7 +8,7 @@ import { signToken } from "lib/jwt.server"
 
 //action to setting cookie 
 export const   action: ActionFunction = async({ request }) => {
-    //use formData to get input name im Form
+    //use formData to grab input name im Form
    const formData = await   request.formData()
    const email = formData.get('email') as string ||''
    const passwd = formData.get('passwd') as string || ''  
@@ -16,7 +16,7 @@ export const   action: ActionFunction = async({ request }) => {
 
 //grab model interface em db.server
 const  { User } = await getModels()
-//take input data iin Form
+//take input data in Form
 const user = await User.findOne({ email })
 console.log({user})
 // if be user in databank fall in second condition

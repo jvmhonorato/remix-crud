@@ -173,7 +173,7 @@ AUTENTICAÇÃO
 
 .Em sign-in.tsx  criar uma function action async, estanciar objetos em cookie, dar um redirect pra admin setando o cookie com o auth .seralize(cookie)
 
-.criar em routes admin/index.tsx, criarcomponet e exportar
+.criar em routes admin/index.tsx, criar componet e exportar
 
 
 .criar em admin quotes/index.tsx
@@ -228,4 +228,26 @@ SETTING types
 
 . criar UserSchema de email e passwd, passar as validações no Schema  
 
-. em jwt.server.ts importat o UserSchema, passar ele pelo Pick pegando somnete o id ou email e passar a tipgem no payload do signToken
+. em jwt.server.ts importat o UserSchema, passar ele pelo Pick pegando somente o id ou email e passar a tipgem no payload do signToken
+
+
+
+
+ERROR HANDLING
+
+.instalar o : npm i tiny-invariant
+
+. Em app criar utils/invariant.ts  passar a function invariant tipda em seguida exportar
+
+. tratar o quote aplicando o inveriant:    
+ invariant(quote, 'Quote not found')return json({quote})}
+
+. em $id.tsx importar o invariant e na LoaderFunction
+
+ . será o retorno que vai dar caso um ID inexitente seja chamado na URL do navegador
+
+ .Em Root.tsx passar ErrorBoundary() pra renderizar um erro na raiz da aplicação
+
+ . passando essa mesma função em quotes.tsx ele irá chmar antes na hierarquia  
+
+ . sempre passar ErrorBoundary() um nível acima

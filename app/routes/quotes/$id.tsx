@@ -2,6 +2,7 @@ import {type ActionFunction, json,type LoaderFunction, redirect } from "@remix-r
 import { Form, Link, useActionData, useLoaderData } from "@remix-run/react";
 import { getModels } from "lib/db.server";
 import {QuoteSchema, type Quote, type QuoteErrors } from "models/Quote";
+import invariant from '~/utils/invariant'   
 
 
 
@@ -49,7 +50,10 @@ export const loader : LoaderFunction = async({params}) => {
     const id = params.id
     const { Quote } = await getModels()
     const quote = await Quote.findOne({ id })
-    return json({quote})
+    invariant(quote, 'Quote not found')
+     return json({quote})
+    
+   
 }
 
 export const handle = {
@@ -77,3 +81,4 @@ export default function QuoteEdit(){
       </>
     )
 }
+
