@@ -26,7 +26,7 @@ export const action : ActionFunction = async({ request }) => {
  const action = formData.get('action')
 if(action === 'delete'){
    //excluir
-   const id = formData.get('id')
+   const id = formData.get('id') as string
    await Quote.remove({ id })
 
    return json({
@@ -34,8 +34,8 @@ if(action === 'delete'){
    })
 }
 
-  const quote = formData.get('quote')
-  const author = formData.get('author')
+  const quote = formData.get('quote') as string
+  const author = formData.get('author') as string
 
   //validation condition to create
   const quoteObj = QuoteSchema.safeParse({
@@ -45,6 +45,7 @@ if(quoteObj.success){
   await Quote.create({
     quote,
     author
+    
   })
   return json({
     quote,

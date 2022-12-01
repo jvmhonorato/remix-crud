@@ -1,11 +1,11 @@
-import { json, redirect } from "@remix-run/node";
-import { auth, deletAuth } from "lib/cookies.server";
+import { json, LoaderFunction, redirect } from "@remix-run/node";
+import {  deleteAuth } from "lib/cookies.server";
 
-export async function loader({request}) {
+export  const loader:LoaderFunction = async({request}) => {
   
     return redirect("/sign-in", {
         headers: {
-            "Set-Cookie": await auth.serialize({})
+            "Set-Cookie": await deleteAuth.serialize({})
         }
  
     })

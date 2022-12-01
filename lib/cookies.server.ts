@@ -5,7 +5,7 @@ export const auth = createCookie("auth",{
     
 })
 
-export const deletAuth = createCookie("auth",{
+export const deleteAuth = createCookie("auth",{
     maxAge: -604_800,
     
 })

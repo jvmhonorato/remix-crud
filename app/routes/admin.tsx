@@ -1,9 +1,9 @@
-import { json, redirect } from "@remix-run/node"
+import { json, LoaderFunction, redirect } from "@remix-run/node"
 import { Link, Outlet, useLoaderData } from "@remix-run/react"
 import { auth } from "lib/cookies.server"
 import { verifyToken } from "lib/jwt.server"
 
-export async function loader({request}){
+export  const loader: LoaderFunction = async({request}) => {
     const cookieHeader = request.headers.get('Cookie')
     const cookie = (await auth.parse(cookieHeader)) || {}
 

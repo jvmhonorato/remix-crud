@@ -219,3 +219,13 @@ DESLOGAR
 .criar routes/sign-out.ts, e criar um loader function
 
 . em cookie.server.ts criar deleteAuth com valor negativado, pois essa é a forma de apagar um cookie setando a data dele no passado
+
+
+
+SETTING types
+
+. criar novo models/User.ts
+
+. criar UserSchema de email e passwd, passar as validações no Schema  
+
+. em jwt.server.ts importat o UserSchema, passar ele pelo Pick pegando somnete o id ou email e passar a tipgem no payload do signToken

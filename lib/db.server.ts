@@ -1,18 +1,19 @@
 import { connect } from 'trilogy'
-
+import { User } from  'models/User'
+import { Quote } from 'models/Quote'
 const db = connect('./file.db', {
     client:'sql.js'
 })
 
 export const getModels = async() => {
-    const  Quote = await db.model('Quote', {
+    const  Quote = await db.model<Quote>('Quote', {
         
         quote: String,
         author: String,
         id: 'increments',
         
     })
-    const  User = await db.model('users', {
+    const  User = await db.model<User>('users', {
         
         email: String,
         passwd: String,
