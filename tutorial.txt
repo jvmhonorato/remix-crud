@@ -251,3 +251,13 @@ ERROR HANDLING
  . passando essa mesma função em quotes.tsx ele irá chmar antes na hierarquia  
 
  . sempre passar ErrorBoundary() um nível acima
+
+
+
+ TAILWIND
+
+ .Instalar Remix usando a documentação, insalar tambem 
+
+ .intalar: npm install --save-dev @remix-run/serve
+
+ .instalar: npm install -D @tailwindcss/forms

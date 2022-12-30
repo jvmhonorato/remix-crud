@@ -77,18 +77,18 @@ export default function Index() {
   const transition = useTransition()
   const isSaving = transition.state === "submitting" && transition.submission?.formData?.get('action') === 'create'
   return (
-    <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.4" }}>
-      <h1>Quotes</h1>
+    <div className=' items-center justify-center min-h-screen from-red-100 via-red-300 to-blue-500 bg-gradient-to-br'>
+      <h1>Comentário</h1>
       {transition.state === "submitting" && <p>Processando...</p>}
-      <Form method="post" action="?index">
+      <Form className=' flex  items-center justify-center min-h-screen ' method="post" action="?index">
       <input type="hidden" name="action" value="create"/>
-      <pre>{JSON.stringify(action, null, 2)}</pre>
-      <pre>{JSON.stringify(isSaving, null, 2)}</pre>
+      {/* <pre>{JSON.stringify(action, null, 2)}</pre>
+      <pre>{JSON.stringify(isSaving, null, 2)}</pre> */}
         <input type="text" name="quote" placeholder="quote" />
         {action?.errors?.fieldErrors?.quote && <p>{action?.errors?.fieldErrors?.quote.map((errMessage) => errMessage)}</p>}
         <input type="text" name="author" placeholder="author" />
         {action?.errors?.fieldErrors?.author && <p>{action?.errors?.fieldErrors?.author.map((errMessage) => errMessage)}</p>}
-        <button disabled={isSaving}>{isSaving ? "Salvando..." : "Create Quote"}</button>
+        <button disabled={isSaving}>{isSaving ? "Salvando..." : "Criar Comentário"}</button>
       </Form >
       <ul>
         { quote.map(quote => {
