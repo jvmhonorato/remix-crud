@@ -93,21 +93,21 @@ export default function Index() {
         {action?.errors?.fieldErrors?.quote && <p>{action?.errors?.fieldErrors?.quote.map((errMessage) => errMessage)}</p>}
         <input type="text" name="author" placeholder="Autor" />
         {action?.errors?.fieldErrors?.author && <p>{action?.errors?.fieldErrors?.author.map((errMessage) => errMessage)}</p>}
-        <button disabled={isSaving}>{isSaving ? "Salvando..." : "Criar Comentário"}</button>
+        <button className="p-2 pl-5 pr-5 bg-green-500 text-gray-100 text-lg rounded-lg focus:border-4 border-green-300" disabled={isSaving}>{isSaving ? "Salvando..." : "Criar Comentário"}</button>
       </Form >
-      <ul className=" mt-10  p-4 items-center justify-center w-[680px] rounded-xl group sm:flex space-x-6 bg-white bg-opacity-50 shadow-xl hover:rounded-2xl" >
+      <ul className=" flex-col mt-10  p-4 items-center justify-center  rounded-xl group  space-x-6 bg-white bg-opacity-50 shadow-xl hover:rounded-2xl" >
         { quote.map(quote => {
           return (
-            <li  key={quote.id.toString()}>
-              <div className="flex justify-start">
-              <div>{quote.quote} </div> - <div>{quote.author}</div>
+            <li className=" flex-row mt-10  p-4 items-center justify-center w-[680px] rounded-xl group sm:flex space-x-6 bg-white bg-opacity-50 shadow-xl hover:rounded-2xl"  key={quote.id.toString()}>
+              <div className="flex-row justify-start">
+              <div>{quote.quote} </div> - <div><p className="font-bold"> {quote.author}</p></div>
               </div>
          
-          <Link to={`quotes/${quote.id}`}>Edit</Link>
+          <Link className="p-2 pl-5 pr-5 bg-transparent border-2 border-blue-500 text-blue-500 text-lg rounded-lg hover:bg-blue-500 hover:text-gray-100 focus:border-4 focus:border-blue-300" to={`quotes/${quote.id}`}>Edit</Link>
               <Form action="?index" method="post">
                 <input type="hidden" name="id" value={quote.id.toString()}/>
                 <input type="hidden" name="action" value="delete"/>
-                <button>Excluir</button>
+                <button className="p-2 pl-5 pr-5 bg-transparent border-2 border-red-500 text-red-500 text-lg rounded-lg hover:bg-red-500 hover:text-gray-100 focus:border-4 focus:border-red-300">Excluir</button>
               </Form>
 
         </li>)
