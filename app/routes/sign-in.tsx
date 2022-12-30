@@ -54,12 +54,15 @@ if(user){
 const SignIn = () => {
     return (
         <>
-        <h1>Sign-in</h1>
+        <h1 className="text-3xl font-bold text-teal-600" >Sign-in</h1>
         
          <Form method="post">
          <input name='email' type="email" placeholder="email"/>
          <input name= 'passwd' type="password" placeholder="password"/>
          <button type='submit'>Sign-in</button>
+
+
+         
 
 
          </Form>

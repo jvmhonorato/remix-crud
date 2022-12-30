@@ -2,11 +2,10 @@
   "private": true,
   "sideEffects": false,
   "scripts": {
-    "build": "remix build",
-    "dev": "remix build && run-p \"dev:*\"",
-    "dev:node": "cross-env NODE_ENV=development nodemon --require dotenv/config ./server.js --watch ./server.js",
-    "dev:remix": "remix watch",
-    "start": "cross-env NODE_ENV=production node ./server.js"
+    "build": "npm run build:css && remix build",
+    "build:css": "tailwindcss -m -i ./styles/app.css -o app/styles/app.css",
+    "dev": "concurrently \"npm run dev:css\" \"remix dev\"",
+    "dev:css": "tailwindcss -w -i ./styles/app.css -o app/styles/app.css"
   },
   "dependencies": {
     "@remix-run/express": "^1.7.6",
@@ -28,13 +27,19 @@
   "devDependencies": {
     "@remix-run/dev": "^1.7.6",
     "@remix-run/eslint-config": "^1.7.6",
+    "@remix-run/serve": "^1.7.6",
+    "@tailwindcss/forms": "^0.5.3",
     "@types/jsonwebtoken": "^8.5.9",
     "@types/react": "^18.0.25",
     "@types/react-dom": "^18.0.8",
+    "autoprefixer": "^10.4.13",
+    "concurrently": "^7.6.0",
     "dotenv": "^16.0.3",
     "eslint": "^8.27.0",
     "nodemon": "^2.0.20",
     "npm-run-all": "^4.1.5",
+    "postcss": "^8.4.20",
+    "tailwindcss": "^3.2.4",
     "typescript": "^4.8.4"
   },
   "engines": {
