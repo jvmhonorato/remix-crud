@@ -77,24 +77,32 @@ export default function Index() {
   const transition = useTransition()
   const isSaving = transition.state === "submitting" && transition.submission?.formData?.get('action') === 'create'
   return (
-    <div className=' items-center justify-center min-h-screen from-red-100 via-red-300 to-blue-500 bg-gradient-to-br'>
-      <h1>Comentário</h1>
+    <div  className='flex items-center justify-center min-h-screen from-red-100 via-red-300 to-blue-500 bg-gradient-to-br'>
+    <div>
+      <div  className='flex items-center justify-center '>
+         <img   src="https://icon-icons.com/downloadimage.php?id=144400&root=2385/PNG/512/&file=comment_bubble_icon_144400.png" width="300px" height="300px" alt="bubble" />
+      </div>
+   
+      {/* <h1 className="font-sans md:font-serif flex items-center justify-center ">Comentário</h1> */}
       {transition.state === "submitting" && <p>Processando...</p>}
-      <Form className=' flex  items-center justify-center min-h-screen ' method="post" action="?index">
+      <Form className='mt-10 flex  items-center justify-center ;  ' method="post" action="?index">
       <input type="hidden" name="action" value="create"/>
       {/* <pre>{JSON.stringify(action, null, 2)}</pre>
       <pre>{JSON.stringify(isSaving, null, 2)}</pre> */}
-        <input type="text" name="quote" placeholder="quote" />
+        <input type="text" name="quote" placeholder="Comentário" />
         {action?.errors?.fieldErrors?.quote && <p>{action?.errors?.fieldErrors?.quote.map((errMessage) => errMessage)}</p>}
-        <input type="text" name="author" placeholder="author" />
+        <input type="text" name="author" placeholder="Autor" />
         {action?.errors?.fieldErrors?.author && <p>{action?.errors?.fieldErrors?.author.map((errMessage) => errMessage)}</p>}
         <button disabled={isSaving}>{isSaving ? "Salvando..." : "Criar Comentário"}</button>
       </Form >
-      <ul>
+      <ul className=" mt-10  p-4 items-center justify-center w-[680px] rounded-xl group sm:flex space-x-6 bg-white bg-opacity-50 shadow-xl hover:rounded-2xl" >
         { quote.map(quote => {
           return (
-            <li key={quote.id.toString()}>
-          {quote.quote} - {quote.author}
+            <li  key={quote.id.toString()}>
+              <div className="flex justify-start">
+              <div>{quote.quote} </div> - <div>{quote.author}</div>
+              </div>
+         
           <Link to={`quotes/${quote.id}`}>Edit</Link>
               <Form action="?index" method="post">
                 <input type="hidden" name="id" value={quote.id.toString()}/>
@@ -106,6 +114,7 @@ export default function Index() {
         })}
        
       </ul>
+    </div>
     </div>
   );
 }
