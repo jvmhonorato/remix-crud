@@ -55,7 +55,7 @@ const SignIn = () => {
     return (
         <>
         
-        
+        <div className='flex items-center justify-center min-h-screen from-red-100 via-red-300 to-blue-500 bg-gradient-to-br'>
          <Form className="mt-8 space-y-6" action="#" method="post">
          {/* <input name='email' type="email" placeholder="email"/>
          <input name= 'passwd' type="password" placeholder="password"/>
@@ -66,7 +66,7 @@ const SignIn = () => {
   <div className="w-full max-w-md space-y-8">
     <div>
       
-      <h2 className="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900">Sign in to your Remix account</h2>
+      <h2 className="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900">Sign in to your Remix Crud</h2>
       
     </div>
     
@@ -101,6 +101,7 @@ const SignIn = () => {
 
 
          </Form>
+         </div>
         </>
     )
 }
