@@ -1,51 +1,92 @@
-# Welcome to Remix!
+## Crud Remix
 
-- [Remix Docs](https://remix.run/docs)
 
-## Development
+application generate quotes building in remix 
 
-Start the Remix development asset server and the Express server by running:
 
-```sh
-npm run dev
-```
+## Technology 
 
-This starts your app in development mode, which will purge the server require cache when Remix rebuilds assets so you don't need a process manager restarting the express server.
+Here are the technologies used in this project.
 
-## Deployment
+* Remix js
+* Tailwind
+* react
+* 
 
-First, build your app for production:
 
-```sh
-npm run build
-```
 
-Then run the app in production mode:
 
-```sh
-npm start
-```
+## Services Used
 
-Now you'll need to pick a host to deploy it to.
+* Github
 
-### DIY
 
-If you're familiar with deploying express applications you should be right at home just make sure to deploy the output of `remix build`
 
-- `build/`
-- `public/build/`
 
-### Using a Template
 
-When you ran `npx create-remix@latest` there were a few choices for hosting. You can run that again to create a new project, then copy over your `app/` folder to the new project that's pre-configured for your target server.
+## Getting started
 
-```sh
-cd ..
-# create a new project, and pick a pre-configured host
-npx create-remix@latest
-cd my-new-remix-app
-# remove the new project's app (not the old one!)
-rm -rf app
-# copy your app over
-cp -R ../my-old-remix-app/app app
-```
+* Dependency
+  - Express JS
+  - bcrypt
+  - json web token
+  - sql
+  - react-dom
+  - zod
+ 
+  
+  
+* To install the dependencies.
+  - npm install
+  
+* To run the project.
+  -npm run start
+  
+## How to use
+
+### 1 - Access sign in page
+
+![remixsignin](https://user-images.githubusercontent.com/101150943/216842244-5a90e42c-33f9-4705-a57e-0fb9ddd35aad.jpg)
+
+
+### 2 Click in "Comentar agora" to access main page
+
+![remixadmin](https://user-images.githubusercontent.com/101150943/216842400-620dbc3b-8a87-4b25-b0f3-35b53e2e288d.jpg)
+
+### 3 - Set the quotes and author, respecting the validation in input field
+
+![remixmain](https://user-images.githubusercontent.com/101150943/216842420-4925b384-4b55-405e-9caf-6bc7795cb49b.jpg)
+
+
+### 5 - see in operation
+
+https://user-images.githubusercontent.com/101150943/216842786-7891f673-da50-46e5-999e-8dafd8128556.mp4
+
+
+## Features
+
+The main features of the application are:
+
+ - Use bcrypt auth to access restrict environment in application
+ 
+  
+
+
+## Links
+  - Deploy on Umbler: soon
+  - Repository: https://github.com/vituhonorato/remix-crud
+    - In case of sensitive bugs like security vulnerabilities, please contact
+      vituhonorato.89@gmail.com directly instead of using issue tracker. We value your effort
+      to improve the security and privacy of this project!
+
+  ## Versioning
+
+  1.0.0.0
+
+
+  ## Authors
+
+  * **JVMH** 
+
+  Please follow github and join us!
+  Thanks to visiting me and good coding!
