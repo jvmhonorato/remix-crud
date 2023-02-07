@@ -1,7 +1,7 @@
 ## Crud Remix
 
 
-application generate quotes building in remix 
+Application generate quotes building in remix 
 
 
 ## Technology 
@@ -40,7 +40,7 @@ Here are the technologies used in this project.
   - npm install
   
 * To run the project.
-  -npm run start
+  - npm run start
   
 ## How to use
 
