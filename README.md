@@ -27,6 +27,7 @@ Here are the technologies used in this project.
 ## Getting started
 
 * Dependency
+
   - Express JS
   - bcrypt
   - json web token
@@ -37,6 +38,7 @@ Here are the technologies used in this project.
   
   
 * To install the dependencies.
+
   - npm install
   
 * To run the project.
