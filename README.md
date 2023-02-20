@@ -1,4 +1,4 @@
-## Crud Remix
+## CRUD Remix
 
 
 Application generate quotes building in remix 
