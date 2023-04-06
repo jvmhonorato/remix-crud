@@ -4,7 +4,7 @@
 Application generate quotes building in remix 
 
 
-## Technology 
+## Technologies 
 
 Here are the technologies used in this project.
 
