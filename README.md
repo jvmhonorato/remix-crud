@@ -8,9 +8,9 @@ Application generate quotes building in remix
 
 Here are the technologies used in this project.
 
-* Remix js
-* Tailwind
-* React
+* REMIX JS
+* TAILWIND
+* REACT JS
 
 
 
