@@ -1,16 +1,28 @@
-## CRUD Remix
+## CRUD WEB REMIX
 
 
-Application generate quotes building in remix 
+Application to generate comments on web applications made with remix
 
 
 ## Technologies 
 
-Here are the technologies used in this project.
+<div style="display: inline_block"><br/>
+  <img align="center" alt="jvmh-remix" height="50" width="50" src="https://res.cloudinary.com/diypdepuw/image/upload/v1698982087/remixlogo.png" />
+  <img align="center" alt="jvmh-typescript" height="50" width="50" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" />
+  
+<img align="center" alt="jvmh-reactjs" height="50" width="50" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" />
+ <img align="center" alt="jvmh-nodejs" height="50" width="50" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-plain.svg" />
+<img align="center" alt="jvmh-firebase" height="50" width="50" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg" />
+<img align="center" alt="jvmh-tailwindcss" height="50" width="50" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-plain.svg" />
+<img align="center" alt="jvmh-jest" height="50" width="50" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jest/jest-plain.svg" />
 
-* REMIX JS
-* TAILWIND
-* REACT JS
+
+
+
+
+
+</div>
+
 
 
 
