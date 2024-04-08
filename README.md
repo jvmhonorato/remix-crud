@@ -1,7 +1,7 @@
 ## CRUD WEB REMIX
 
 
-Application to generate comments on web applications made with remix
+The real-time chat application developed in REMIX is a modular and flexible solution that can be easily integrated with other applications to provide real-time communication features.
 
 
 ## Technologies 
