@@ -104,7 +104,7 @@ The main features of the application are:
 
   ## Authors
 
-  * **JVMH** 
+  * **@Honorato-Dev** 
 
   Please follow github and join us!
   Thanks to visiting me and good coding!
